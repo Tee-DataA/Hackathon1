@@ -29,7 +29,7 @@ We are required to model the price of cars with the available independent variab
 ## Hypothesis and how to validate?
 I believe there are many factors that affect the price of a car. Some are factors can be directly affected, like the size of an engine, or the number of doors, and other factors are fully/partially dependant like the length, width, power. From my vested interest in cars, not all of these factors are contributary to the price. Factors such as weight are not a selling point, and the price is listed for takes into consideration manufacturing and logistical costs among others.
 
-The main factors I believe will affect the price are the brand, the horsepower, enginesize and economy. I will validate this by checking the correlation between the variables and price
+The main factors I believe will affect the price are the brand, the horsepower, enginesize and economy. I will validate this by checking the correlation between the variables and price. An increase in horsepower and engine size should increase the price. Increasing these variables directly affects the mpg, and hence I predict the lower mpg cars will have a lower price
 
 
 ## Project Plan

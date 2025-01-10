@@ -29,64 +29,77 @@ We are required to model the price of cars with the available independent variab
 ## Hypothesis and how to validate?
 I believe there are many factors that affect the price of a car. Some are factors can be directly affected, like the size of an engine, or the number of doors, and other factors are fully/partially dependant like the length, width, power. From my vested interest in cars, not all of these factors are contributary to the price. Factors such as weight are not a selling point, and the price is listed for takes into consideration manufacturing and logistical costs among others.
 
+The main factors I believe will affect the price are the brand, the horsepower, enginesize and economy. I will validate this by checking the correlation between the variables and price
 
 
 ## Project Plan
 * Outline the high-level steps taken for the analysis.
+Relevant test were carried to see which of the variables are significant in affecting the price
+
 * How was the data managed throughout the collection, processing, analysis and interpretation steps?
+Data was collected from kaggle. One of the first checks was to see if there was any missing data of which there was none. It was processed to make the distribution more closer to a normal distribution. Interpretation was done using my background knowledge in statistics
 * Why did you choose the research methodologies you used?
+Having studied statistics I knew the relevant methodologies to use. Since price was the main Variable I was interested, I had to check how and if the other variables contributed to it. 
 
 ## The rationale to map the business requirements to the Data Visualisations
 * List your business requirements and a rationale to map them to the Data Visualisations
+Business requirements were to see what factors affected the price the most, the least or even at all. This information is extremely important as the right decisions need to be made before it reaches the manufacturing stage. Making changes after that is very costly
 
 ## Analysis techniques used
 * List the data analysis methods used and explain limitations or alternative approaches.
+Correlation analysis - doesn't always give the whole picture. Dependant on the size of the dataset
+ANOVA test for categorical variables - assumes the variance of price is equal accross all the variables. It is sensitive to outliers
+
 * How did you structure the data analysis techniques. Justify your response.
+The aim was to remove as many features as I could that did not contribute enough as a factor to the price. I started with the correlation check to remove the features that had a weak correlation. This doesn't work on categorical variables so I used an ANOVA test on those and kept the variables with a p-value<0.05 
 * Did the data limit you, and did you use an alternative approach to meet these challenges?
+The data did limit me as the sample was too small. I couldn't perform an analysis to check if brand name affects the price which I believe it does. The sample size was also too small small to draw any meaningful information for features like aspiration which only had 19 cars with a turbo.
+
 * How did you use generative AI tools to help with ideation, design thinking and code optimisation?
+Gemini was used along the way to help me write the code, solve syntax problems, and brainstorm analysis technique.
 
 ## Ethical considerations
 * Were there any data privacy, bias or fairness issues with the data?
+Data was on a public server available to all so there was no issue with privacy. As mentioned before, sample size was very small and range of cars and classes was not big enough to make any conclusions based on those features
 * How did you overcome any legal or societal issues?
+I didn't not face any
 
-## Dashboard Design
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
-* Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
-* How were data insights communicated to technical and non-technical audiences?
-* Explain how the dashboard was designed to communicate complex data insights to different audiences. 
 
 ## Unfixed Bugs
-* Please mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable to consider, paucity of time and difficulty understanding implementation are not valid reasons to leave bugs unfixed.
+There are no unfixed bugs in my code
 * Did you recognise gaps in your knowledge, and how did you address them?
+Gaps in my knowledge were filled by using resources such as the LMS for revision, and the internet
 * If applicable, include evidence of feedback received (from peers or instructors) and how it improved your approach or understanding.
+I had asked Vasi to have a quick glance to see if I was on the right track, which gave me confidence that I was doing the task correctly
 
 ## Development Roadmap
 * What challenges did you face, and what strategies were used to overcome these challenges?
 * What new skills or tools do you plan to learn next based on your project experience? 
+It was my first project so it was very stressful. I wasn't not sure how to start and what analysis I needed to perform.
 
-## Deployment
-### Heroku
 
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
-* Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
-
-1. Log in to Heroku and create an App
-2. From the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
 
 
 ## Main Data Analysis Libraries
 * Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
-
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_style('whitegrid')
+from sklearn.pipeline import Pipeline
+from feature_engine import transformation as vt
+from feature_engine.outliers import Winsorizer
+import plotly.express as px
+from scipy.stats import f_oneway
+from feature_engine.selection import SmartCorrelatedSelection
+from feature_engine.encoding import OrdinalEncoder
+from feature_engine.encoding import OneHotEncoder
 
 ## Credits 
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-* You can break the credits section up into Content and Media, depending on what you have included in your project. 
+https://www.kaggle.com/datasets/hellbuoy/car-price-prediction 
+
 
 ### Content 
 
@@ -94,12 +107,9 @@ I believe there are many factors that affect the price of a car. Some are factor
 - Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
 - The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
 
-### Media
-
-- The photos used on the home and sign-up page are from This Open-Source site
-- The images used for the gallery page were taken from this other open-source site
 
 
 
 ## Acknowledgements (optional)
-* Thank the people who provided support through this project.
+
+Vasi and Neil for the support
